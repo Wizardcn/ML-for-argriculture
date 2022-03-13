@@ -1,0 +1,24 @@
+{
+    "id": "C0BD0D99",
+    "path": "~/RScripts/k-mean-clustering/dataset.csv",
+    "project_path": "dataset.csv",
+    "type": "text",
+    "hash": "2979486240",
+    "contents": "",
+    "dirty": false,
+    "created": 1647196894993.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1647196881,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1647196881,
+    "read_only": false,
+    "read_only_alternatives": []
+}

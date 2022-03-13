@@ -1,0 +1,42 @@
+# k-mean Clustering 
+library(tidyverse) 
+library(caret) 
+library(e1071) 
+library(mlbench)
+library(dplyr)
+
+dataset<- read.csv(file.choose()) 
+
+# remove species column 
+Region<- dataset$region  
+
+dataset<- dataset %>% select(-Region)  
+
+# model fitting 
+set.seed(42) 
+km_results<- kmeans(dataset, centers=3) 
+km_results$cluster  
+
+# Visualize cluster 
+plot(x= dataset$harvest.length,     
+     y= dataset$harvest.width,     
+     pch= km_results$cluster, col= km_results$cluster)  
+
+#Centroid (center of the cluster) 
+points(x=km_results$centers[,3],       
+       y=km_results$centers[,4],       
+       pch= 8,       
+       cex= 2)  
+
+table(region, km_results$cluster)  
+
+# add new column to original data 
+dataset$cluster <- km_results$cluster 
+dataset  
+
+# cluster profile 
+dataset %>%   
+  group_by(cluster)%>%   
+  summarise(avg_sp_length= mean(cultivating.length),            
+            avg_sp_width= mean(cultivating.width),            
+            n= n()) %>%   mutate(pct= n/sum(n))
